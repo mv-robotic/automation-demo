@@ -1,3 +1,3 @@
 This is a test repo for github actions.
 
-Changes.
+1.2 Changes
