@@ -18,6 +18,9 @@ jobs:
           git remote add upstream https://github.com/mv-mayank/automation-demo
           git fetch upstream
 
-          git checkout -b chore/update-main-to-upstream
+          git checkout main
           git merge upstream/main
-          git push origin chore/update-main-to-upstream
+          git push origin main
+          
+          git fetch upstream --tags
+          git push origin --tags
