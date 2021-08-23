@@ -1,0 +1,23 @@
+name: Merge upstream branches
+on:
+  schedule:
+     # actually, ~5 minutes is the highest
+     # effective frequency you will get
+    - cron:  '* * * * *'
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Merge upstream
+        run: |
+          git config --global user.name 'mv-mayank'
+          git config --global user.email 'mv-mayank@users.noreply.github.com'
+
+          git pull --unshallow
+          git remote add upstream https://github.com/mv-mayank/automation-demo
+          git fetch upstream
+
+          git checkout -b chore/update-master-to-upstream
+          git merge upstream/master
+          git push origin chore/update-master-to-upstream
